@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Blaze;
@@ -377,7 +378,7 @@ public class PlayerListener implements Listener {
              * PvP
              */
             
-            else if ((p.getKiller() != null || lastDamageEvent.getDamager() instanceof Player) && (config.getBoolean("events.pvp.melee") || config.getBoolean("events.pvp.all")) && p.hasPermission("irestore.events.pvp.melee")) { 
+            else if ((p.getKiller() != null || lastDamageEvent.getDamager() instanceof Player) && (config.getBoolean("events.pvp.melee") || config.getBoolean("events.pvp.all")) && p.hasPermission("irestore.events.pvp.melee")) {
             	killer = p.getKiller().getName();
             }
             
@@ -465,44 +466,21 @@ public class PlayerListener implements Listener {
         /* 
          * Start figuring what the player will get to keep.
          */
+        
+        if(config.getBoolean("keep-inventory"))
+        	if(p.hasPermission("irestore.keep.all") || p.hasPermission("irestore.keep.inventory"))
+        		keepInventory(event);
 
-        if (p.hasPermission("irestore.keep.all") && config.getBoolean("keep-inventory") && config.getBoolean("keep-xp")) {
-        	keepXP(event);
-        	
-            if (p.hasPermission("irestore.money.steal") && config.getBoolean("vault.enabled") && killer != null) {
-                moneySteal(event);
-            }
-            
-            if (config.getBoolean("death-message")) {
-                sendDeathMessage(event, killer);
-            }
-            
-            keepInventory(event);
-        }
-        
-        else if ((p.hasPermission("irestore.keep.xp") || p.hasPermission("irestore.keep.all")) && config.getBoolean("keep-xp") && !config.getBoolean("keep-inventory")) {
-        	keepXP(event);
-            
-            if (p.hasPermission("irestore.money.steal") && config.getBoolean("vault.enabled") && killer != null) {
-                moneySteal(event);
-            }
-            
-            if (config.getBoolean("death-message")) {
-                sendDeathMessage(event, killer);
-            }
-        }
-        
-        else if ((p.hasPermission("irestore.keep.inventory") || p.hasPermission("irestore.keep.all")) && config.getBoolean("keep-inventory") && !config.getBoolean("keep-xp")) {            
-            if (p.hasPermission("irestore.money.steal") && config.getBoolean("vault.enabled") && killer != null) {
-                moneySteal(event);
-            }
-            
-            if (config.getBoolean("death-message")) {
-                event.setDeathMessage(ChatColor.YELLOW + "[iRestore] " + ChatColor.RED + p.getName() + ChatColor.GREEN + " was killed by " + ChatColor.RED + killer + ChatColor.GREEN + "!");
-            }
-            
-            keepInventory(event);
-        }
+        if(config.getBoolean("keep-xp"))
+        	if(p.hasPermission("irestore.keep.all") || p.hasPermission("irestore.keep.xp"))
+        		keepXP(event);
+
+        if(config.getBoolean("vault.enabled"))
+        	if(p.hasPermission("irestore.money.steal")  && killer != null)
+        		moneySteal(event);
+
+        if(config.getBoolean("death-message"))
+        	sendDeathMessage(event, killer);
 	}
 	
 	@EventHandler
