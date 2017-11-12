@@ -73,16 +73,14 @@ events:
 vault:
     enabled: false
     money-to-steal: 2
+# Item names are from list on https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html under Enum Constant Summary section
 blacklist:
     enabled: false
-    items:
-    - 144
-    - 397
+    items: []
+#   - DIRT
 whitelist:
     enabled: false
-    items:
-    - 299
-    - 300
+    items: []
 percentage-drop:
     enabled: false
     percentage: 50
