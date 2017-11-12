@@ -10,10 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.triarry.iRestore.commands.InfoCommand;
 import com.github.triarry.iRestore.listeners.PlayerListener;
-import com.github.triarry.iRestore.utilities.Updater;
 import com.github.triarry.iRestore.utilities.Utilities;
-import com.github.triarry.iRestore.utilities.Updater.UpdateResult;
-import com.github.triarry.iRestore.utilities.metrics.Metrics;
 
 import java.io.*;
 
@@ -44,15 +41,7 @@ public class iRestore extends JavaPlugin {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    
-	    try {
-	        Metrics metrics = new Metrics(this);
-	        metrics.start();
-            this.getLogger().info("Now tracking stats!");
-	    } catch (IOException e) {
-	        // Failed to submit the stats :-(
-	    }
-	    
+
 	    config = new YamlConfiguration();
 	    loadYamls();
 	    
@@ -78,21 +67,6 @@ public class iRestore extends JavaPlugin {
             	this.getLogger().info("iRestore has hooked into MyPet!");
             }
         }
-        
-		if(getConfig().getBoolean("check-for-updates")) {
-			Updater updater = new Updater(this, "irestore", this.getFile(), Updater.UpdateType.NO_DOWNLOAD, false);
-			updater.getResult();
-			
-			if(updater.getResult() == UpdateResult.UPDATE_AVAILABLE) {
-				update = true;
-			}
-			
-			ver = updater.getLatestVersionString();
-		}
-		
-		if (update) {
-			this.getLogger().info("You have an update waiting for you! (dev.bukkit.org/server-mods/irestore/)");
-		}
 	}
 	
 	private void firstRun() throws Exception {
