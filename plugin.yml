@@ -86,9 +86,12 @@ permissions:
             irestore.events.mobs.enderdragon: true
             irestore.events.mobs.enderman: true
             irestore.events.mobs.endermite: true
+            irestore.events.mobs.evoker: true
             irestore.events.mobs.ghast: true
             irestore.events.mobs.giant: true
             irestore.events.mobs.guardian: true
+            irestore.events.mobs.husk: true
+            irestore.events.mobs.illusioner: true
             irestore.events.mobs.iron_golem: true
             irestore.events.mobs.killer_rabbit: true
             irestore.events.mobs.magma_cube: true
@@ -96,6 +99,9 @@ permissions:
             irestore.events.mobs.skeleton: true
             irestore.events.mobs.slime: true
             irestore.events.mobs.spider: true
+            irestore.events.mobs.stray: true
+            irestore.events.mobs.vex: true
+            irestore.events.mobs.vindicator: true
             irestore.events.mobs.witch: true
             irestore.events.mobs.wither: true
             irestore.events.mobs.wither_skeleton: true
@@ -118,12 +124,18 @@ permissions:
         description: Allows a player's inventory to be saved after being killed by an enderdragon
     irestore.events.mobs.enderman:
         description: Allows a player's inventory to be saved after being killed by an enderman
+    irestore.events.mobs.evoker:
+        description: Allows a player's inventory to be saved after being killed by an evoker
     irestore.events.mobs.ghast:
         description: Allows a player's inventory to be saved after being killed by a ghast
     irestore.events.mobs.giant:
         description: Allows a player's inventory to be saved after being killed by a giant
     irestore.events.mobs.guardian:
         description: Allows a player's inventory to be saved after being killed by a guardian
+    irestore.events.mobs.husk:
+        description: Allows a player's inventory to be saved after being killed by a husk
+    irestore.events.mobs.illusioner:
+        description: Allows a player's inventory to be saved after being killed by an illusioner
     irestore.events.mobs.iron_golem:
         description: Allows a player's inventory to be saved after being killed by an iron golem
     irestore.events.mobs.magma_cube:
@@ -136,12 +148,18 @@ permissions:
         description: Allows a player's inventory to be saved after being killed by a slime
     irestore.events.mobs.spider:
         description: Allows a player's inventory to be saved after being killed by a spider
+    irestore.events.mobs.stray:
+        description: Allows a player's inventory to be saved after being killed by a stray
     irestore.events.mobs.witch:
         description: Allows a player's inventory to be saved after being killed by a witch
     irestore.events.mobs.wither:
         description: Allows a player's inventory to be saved after being killed by a wither
     irestore.events.mobs.wither_skeleton:
         description: Allows a player's inventory to be saved after being killed by a wither skeleton
+    irestore.events.mobs.vex:
+        description: Allows a player's inventory to be saved after being killed by a vex
+    irestore.events.mobs.vindicator:
+        description: Allows a player's inventory to be saved after being killed by a vindicator
     irestore.events.mobs.zombie:
         description: Allows a player's inventory to be saved after being killed by a zombie
     irestore.events.mobs.zombie_pigman:
